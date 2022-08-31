@@ -6,9 +6,39 @@
 
 
 using namespace std;
+//====================================================================INSERTIONSORT
+void insertionSort(int arr[], int n) 
+{ 
+    int i, key, j; 
+    for (i = 1; i < n; i++)
+    { 
+        key = arr[i]; 
+        j = i - 1; 
+  
+        // Move elements of arr[0..i-1],  
+        // that are greater than key, to one 
+        // position ahead of their 
+        // current position
+        while (j >= 0 && arr[j] > key)
+        { 
+            arr[j + 1] = arr[j]; 
+            j = j - 1; 
+        } 
+        arr[j + 1] = key; 
+    } 
+} 
+  
+// A utility function to print an array 
+// of size n 
+void printArray(int arr[], int n) 
+{ 
+    int i; 
+    for (i = 0; i < n; i++) 
+        cout << arr[i] << " "; 
+    cout << endl;
+} 
 
-
-
+//====================================================================QUICKSORT
 // Swap two elements - Utility function  
 void swap(int* a, int* b) 
 { 
@@ -51,14 +81,9 @@ void quickSort(int arr[], int low, int high)
     } 
 } 
    
-void displayArray(int arr[], int size) 
-{ 
-    int i; 
-    for (i=0; i < size; i++) 
-        cout<<arr[i]<<"\t"; 
-      
-} 
    
+   
+
 
 
 //---------------------------------------------------------------------------------Get the csv file ass a string
@@ -107,12 +132,10 @@ string datos(){
             size ++;
             
         }
-        cout << "\n";
+
   
     }
     
-
-	cout << "--------------------------------------------------------" <<endl;
 
     return StringToInt;
     
@@ -154,7 +177,7 @@ int *convertStrtoArr(string str)
         }
     }
     
-   cout << "array terminado[] = " <<endl;
+   //cout << "array terminado[] = " <<endl;
 
     for (i = 0; i <= j; i++) {
         //cout << arr[i] << "," ;
@@ -162,14 +185,22 @@ int *convertStrtoArr(string str)
         
         //
     }
-    cout<< endl << endl;
+    //cout<< endl << endl;
     arr[0] = arraySize;
     
-    cout << arraySize << endl;
+    //cout << arraySize << endl;
     
   return arr;
 }
-
+//===================================================================Function to print the array
+void displayArray(int arr[], int size) 
+{ 
+    int i; 
+    for (i=0; i < size; i++) 
+        cout<<arr[i]<<"\t"; 
+      
+} 
+   
 
   
 // Driver code''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
@@ -177,10 +208,9 @@ int main()
 {
     string str = datos();
     int *DatosFinales = convertStrtoArr(str);
-    cout<<"Pruebas de quicksort" <<endl;
-
-   	int n= DatosFinales[0];
-    //int n = sizeof(prueba)/sizeof(prueba[0]); 
+    int n= DatosFinales[0];
+    
+    
     cout<<"Input array"<<endl;
     displayArray(DatosFinales++,n);
     cout<<endl;
