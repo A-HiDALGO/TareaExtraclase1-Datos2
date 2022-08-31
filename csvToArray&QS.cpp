@@ -6,7 +6,51 @@
 
 
 using namespace std;
-//====================================================================INSERTIONSORT
+
+
+
+//====================================================================SELECTION SORT
+//Swap function
+void swap2(int *xp, int *yp)
+{
+    int temp = *xp;
+    *xp = *yp;
+    *yp = temp;
+}
+ 
+void selectionSort(int arr[], int n)
+{
+    int i, j, min_idx;
+ 
+    // One by one move boundary of
+    // unsorted subarray
+    for (i = 0; i < n-1; i++)
+    {
+       
+        // Find the minimum element in
+        // unsorted array
+        min_idx = i;
+        for (j = i+1; j < n; j++)
+        if (arr[j] < arr[min_idx])
+            min_idx = j;
+ 
+        // Swap the found minimum element
+        // with the first element
+        if(min_idx!=i)
+            swap2(&arr[min_idx], &arr[i]);
+    }
+}
+ 
+//Function to print an array
+void printArray(int arr[], int size)
+{
+    int i;
+    for (i=0; i < size; i++)
+        cout << arr[i] << " ";
+    cout << endl;
+}
+ 
+//====================================================================INSERTION SORT
 void insertionSort(int arr[], int n) 
 { 
     int i, key, j; 
@@ -30,6 +74,7 @@ void insertionSort(int arr[], int n)
   
 // A utility function to print an array 
 // of size n 
+/*
 void printArray(int arr[], int n) 
 { 
     int i; 
@@ -37,8 +82,8 @@ void printArray(int arr[], int n)
         cout << arr[i] << " "; 
     cout << endl;
 } 
-
-//====================================================================QUICKSORT
+*/
+//====================================================================QUICK SORT
 // Swap two elements - Utility function  
 void swap(int* a, int* b) 
 { 
@@ -210,27 +255,47 @@ void displayArray(int arr[], int size)
 // Driver code''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 int main()
 {
+	string entrada;
     string str = datos();
     int *DatosFinales = convertStrtoArr(str);
     int n= DatosFinales[0];
     //int pruebas[]= {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19};
     //int n = 20;
     
+    cout << "Digite " << endl << "QS para  Quick sort" << endl << "IS para Insertion sort" << endl <<   "SS para Selection sort"  << endl;
+    
+    cin  >> entrada;
+    
     cout<<"Input array"<<endl;
     displayArray(DatosFinales++,n);
     cout<<endl;
-    quickSort(DatosFinales, 0, n-1); 
-    cout<<"Array sorted with quick sort"<<endl; 
-    displayArray(DatosFinales++,n); 
     
+    if(entrada == "QS" || entrada == "qs"){
+    	quickSort(DatosFinales, 0, n-1); 
+   	    cout<<"Array sorted with quick sort"<<endl; 
+   	     displayArray(DatosFinales++,n); 
+
+	}
     
-    //int arr[] = { 12, 11, 13, 5, 6 }; 
-    //int N = sizeof(arr) / sizeof(arr[0]); 
-  
-    //insertionSort(DatosFinales, n); 
-    //printArray(DatosFinales, n); 
-    //cout<<"Array sorted with Insertion sort"<<endl; 
-    //displayArray(DatosFinales++,n); 
+    else if(entrada == "IS" || entrada == "is" ){
+       insertionSort(DatosFinales, n); 
+       cout<<"Array sorted with Insertion sort"<<endl; 
+        displayArray(DatosFinales++,n); 
+     
+	}
+	
+	else if(entrada == "SS" || entrada == "ss" ){
+		selectionSort(DatosFinales, n);
+    	cout<<"Array sorted with Selection sort"<<endl; 
+    	 displayArray(DatosFinales++,n); 
+	}
+	
+	else{
+		cout << "Usted no digito una enrada valida" << endl;
+	}
+
+
+   
     
     return 0;
 
