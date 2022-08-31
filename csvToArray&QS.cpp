@@ -61,12 +61,12 @@ void displayArray(int arr[], int size)
    
 
 
-
+//---------------------------------------------------------------------------------Get the csv file ass a string
 string datos(){
 
     
 	string StringToInt = "";
-    ifstream in("36kb.csv");
+    ifstream in("1kb.csv");
 
     string line, field;
 
@@ -111,39 +111,14 @@ string datos(){
   
     }
     
-    
-    
- /*
- 	string pagedArray [size];
- 	
-    for (size_t i=0; i<array.size(); ++i)
-    {
-        for (size_t j=0; j<array[i].size(); ++j)
-        {
 
-          //  pagedArray[i+j] = array[i][j];
-        }
-        cout << "\n";
-  
-    }
-    
-    for (int i=0; i<size; ++i)
-    {
-    	cout << pagedArray[i] << ",";
-    }
-   // cout<< "A" << array[0][0] << endl;
-	
-	*/
-	
-	//cout <<"Datos en String:  "<<endl  <<StringToInt << endl;
 	cout << "--------------------------------------------------------" <<endl;
-	//cout<< "prubea string to int" <<StringToInt << endl;
+
     return StringToInt;
     
 }
-
-
-//''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+ 
+//'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''' CONVERT THE STRING TO AN ARRAY
 int *convertStrtoArr(string str)
 {
     // get length of string str
@@ -201,21 +176,17 @@ int *convertStrtoArr(string str)
 int main()
 {
     string str = datos();
-  
-    int *prueba = convertStrtoArr(str);
-
-    
-	
+    int *DatosFinales = convertStrtoArr(str);
     cout<<"Pruebas de quicksort" <<endl;
 
-   	int n= prueba[0];
+   	int n= DatosFinales[0];
     //int n = sizeof(prueba)/sizeof(prueba[0]); 
     cout<<"Input array"<<endl;
-    displayArray(prueba++,n);
+    displayArray(DatosFinales++,n);
     cout<<endl;
-    quickSort(prueba++, 0, n-1); 
+    quickSort(DatosFinales++, 0, n-1); 
     cout<<"Array sorted with quick sort"<<endl; 
-    displayArray(prueba++,n-1); 
+    displayArray(DatosFinales++,n-1); 
     
     
     return 0;
