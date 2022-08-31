@@ -187,6 +187,8 @@ int *convertStrtoArr(string str)
     }
     //cout<< endl << endl;
     arr[0] = arraySize;
+	
+    
     
     //cout << arraySize << endl;
     
@@ -196,11 +198,13 @@ int *convertStrtoArr(string str)
 void displayArray(int arr[], int size) 
 { 
     int i; 
-    for (i=0; i < size; i++) 
+    arr++;
+    for (i=0; i < size - 1; i++) 
         cout<<arr[i]<<"\t"; 
-      
+      	cout<< endl;
 } 
-   
+
+
 
   
 // Driver code''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
@@ -209,15 +213,24 @@ int main()
     string str = datos();
     int *DatosFinales = convertStrtoArr(str);
     int n= DatosFinales[0];
-    
+    //int pruebas[]= {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19};
+    //int n = 20;
     
     cout<<"Input array"<<endl;
     displayArray(DatosFinales++,n);
     cout<<endl;
-    quickSort(DatosFinales++, 0, n-1); 
+    quickSort(DatosFinales, 0, n-1); 
     cout<<"Array sorted with quick sort"<<endl; 
-    displayArray(DatosFinales++,n-1); 
+    displayArray(DatosFinales++,n); 
     
+    
+    //int arr[] = { 12, 11, 13, 5, 6 }; 
+    //int N = sizeof(arr) / sizeof(arr[0]); 
+  
+    //insertionSort(DatosFinales, n); 
+    //printArray(DatosFinales, n); 
+    //cout<<"Array sorted with Insertion sort"<<endl; 
+    //displayArray(DatosFinales++,n); 
     
     return 0;
 
