@@ -136,7 +136,7 @@ string datos(){
 
     
 	string StringToInt = "";
-    ifstream in("1kb.csv");
+    ifstream in("8kb.csv");
 
     string line, field;
 
@@ -262,7 +262,7 @@ int main()
     //int pruebas[]= {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19};
     //int n = 20;
     
-    cout << "Digite " << endl << "QS para  Quick sort" << endl << "IS para Insertion sort" << endl <<   "SS para Selection sort"  << endl;
+    cout << "Digite " << endl << "QS para  Quick sort | " <<  "IS para Insertion sort | " <<   "SS para Selection sort | "  << endl;
     
     cin  >> entrada;
     
@@ -291,7 +291,7 @@ int main()
 	}
 	
 	else{
-		cout << "Usted no digito una enrada valida" << endl;
+		cout << "Usted no digito una entrada valida" << endl;
 	}
 
 
