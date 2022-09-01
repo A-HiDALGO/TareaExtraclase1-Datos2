@@ -4,10 +4,11 @@
 #include <vector>
 #include <fstream>
 
-
 using namespace std;
 
-
+// Alessandro Hidalgo Prendas / 2020099003.
+//TEC | Ing. en Computadores.
+//Semestre 2, 2022.
 
 //====================================================================SELECTION SORT
 //Swap function
@@ -41,15 +42,7 @@ void selectionSort(int arr[], int n)
     }
 }
  
-//Function to print an array
-void printArray(int arr[], int size)
-{
-    int i;
-    for (i=0; i < size; i++)
-        cout << arr[i] << " ";
-    cout << endl;
-}
- 
+
 //====================================================================INSERTION SORT
 void insertionSort(int arr[], int n) 
 { 
@@ -71,18 +64,7 @@ void insertionSort(int arr[], int n)
         arr[j + 1] = key; 
     } 
 } 
-  
-// A utility function to print an array 
-// of size n 
-/*
-void printArray(int arr[], int n) 
-{ 
-    int i; 
-    for (i = 0; i < n; i++) 
-        cout << arr[i] << " "; 
-    cout << endl;
-} 
-*/
+
 //====================================================================QUICK SORT
 // Swap two elements - Utility function  
 void swap(int* a, int* b) 
@@ -125,18 +107,53 @@ void quickSort(int arr[], int low, int high)
         quickSort(arr, pivot + 1, high); 
     } 
 } 
-   
-   
-   
-
 
 
 //---------------------------------------------------------------------------------Get the csv file ass a string
 string datos(){
 
     
-	string StringToInt = "";
-    ifstream in("8kb.csv");
+    string fileSizes;
+    string StringToInt = "";
+    char *SelectedSize;
+    cout << "Digite el tamaño que desea trabajar" << endl << "Tamaños Disponibles:" <<  "| 1kb | 4kb | 8kb | 12kb | 24kb | 36kb |" << endl;
+    
+    cin  >> fileSizes;
+    
+    if( fileSizes == "1kb"){
+    	 SelectedSize = "1kb.csv";
+	}
+    
+    else if( fileSizes == "4kb"){
+    	 SelectedSize = "4kb.csv";
+	}
+	
+	else if( fileSizes == "8kb"){
+    	 SelectedSize = "8kb.csv";
+	}
+	
+	else if( fileSizes == "12b"){
+    	 SelectedSize = "12kb.csv";
+	}
+	
+	else if( fileSizes == "24kb"){
+    	 SelectedSize = "24kb.csv";
+	}
+	
+	else if( fileSizes == "36kb"){
+    	 SelectedSize = "36kb.csv";
+	}
+	
+	else{
+		cout<< " No Ingreso un valor correcto." << endl;
+	}
+	   
+   cout << "Tamaño seleccionado: "<<SelectedSize << endl;
+   cout<< "----------------------------------------------------------------------------------------------" << endl;
+   
+	ifstream in(SelectedSize);
+	
+    
 
     string line, field;
 
@@ -178,12 +195,9 @@ string datos(){
             
         }
 
-  
     }
     
-
-    return StringToInt;
-    
+    return StringToInt;    
 }
  
 //'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''' CONVERT THE STRING TO AN ARRAY
@@ -225,18 +239,13 @@ int *convertStrtoArr(string str)
    //cout << "array terminado[] = " <<endl;
 
     for (i = 0; i <= j; i++) {
-        //cout << arr[i] << "," ;
         arraySize++;
         
         //
     }
     //cout<< endl << endl;
     arr[0] = arraySize;
-	
-    
-    
-    //cout << arraySize << endl;
-    
+
   return arr;
 }
 //===================================================================Function to print the array
@@ -248,10 +257,7 @@ void displayArray(int arr[], int size)
         cout<<arr[i]<<"\t"; 
       	cout<< endl;
 } 
-
-
-
-  
+ 
 // Driver code''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 int main()
 {
@@ -259,44 +265,43 @@ int main()
     string str = datos();
     int *DatosFinales = convertStrtoArr(str);
     int n= DatosFinales[0];
-    //int pruebas[]= {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19};
-    //int n = 20;
-    
-    cout << "Digite " << endl << "QS para  Quick sort | " <<  "IS para Insertion sort | " <<   "SS para Selection sort | "  << endl;
+
+    cout << "Digite que algortimo de ordenamiento quiere utilizar " << endl << "| QS para  Quick sort | " <<  "| IS para Insertion sort | " <<   "| SS para Selection sort |"  << endl;
     
     cin  >> entrada;
     
-    cout<<"Input array"<<endl;
+    cout<<"Array de Entrada: "<<endl << endl;
     displayArray(DatosFinales++,n);
+     cout<< "----------------------------------------------------------------------------------------------" << endl;
     cout<<endl;
     
     if(entrada == "QS" || entrada == "qs"){
     	quickSort(DatosFinales, 0, n-1); 
-   	    cout<<"Array sorted with quick sort"<<endl; 
+   	    cout<<"Array sorted with quick sort"<<endl<<endl; 
    	     displayArray(DatosFinales++,n); 
 
 	}
     
     else if(entrada == "IS" || entrada == "is" ){
        insertionSort(DatosFinales, n); 
-       cout<<"Array sorted with Insertion sort"<<endl; 
+       cout<<"Array sorted with Insertion sort"<<endl<<endl; 
         displayArray(DatosFinales++,n); 
      
 	}
 	
 	else if(entrada == "SS" || entrada == "ss" ){
 		selectionSort(DatosFinales, n);
-    	cout<<"Array sorted with Selection sort"<<endl; 
+    	cout<<"Array sorted with Selection sort"<<endl<<endl; 
     	 displayArray(DatosFinales++,n); 
 	}
 	
 	else{
 		cout << "Usted no digito una entrada valida" << endl;
+		 cout<< "----------------------------------------------------------------------------------------------" << endl;
 	}
 
 
-   
-    
+  
     return 0;
 
 }
